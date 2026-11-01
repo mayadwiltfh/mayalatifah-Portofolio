@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maya Dwi Latifah | Software QA Portfolio</title>
+<meta name="description" content="Portofolio Maya Dwi Latifah, Software Quality Assurance (Manual, API, UAT).">
+<style>
+:root{--bg:#f4f8f6;--card:#fff;--text:#1b2a26;--muted:#5a6d66;--brand:#1f8a70;--accent:#e0b830;--navy:#12125c;--line:#d9e5e0}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1614;--card:#16211e;--text:#e8f0ed;--muted:#9ab0a8;--brand:#4cc3a3;--navy:#c3c3ff;--line:#25342e}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--brand)}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px 16px;flex-wrap:wrap;padding:10px 20px;justify-content:center}
+nav a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:600}nav a:hover{color:var(--brand)}
+section{max-width:960px;margin:0 auto;padding:44px 20px}
+h2{font-size:26px;margin:0 0 20px;color:var(--navy)}
+h2::after{content:"";display:block;width:48px;height:4px;background:var(--accent);margin-top:6px;border-radius:2px}
+.hero{display:flex;gap:32px;align-items:center;flex-wrap:wrap;padding-top:56px}
+.hero .txt{flex:1 1 340px}
+.hero h1{font-size:clamp(30px,6vw,46px);margin:0;color:var(--navy);line-height:1.15}
+.role{color:var(--brand);font-weight:700;margin:6px 0 14px;font-size:18px}
+.photo{width:190px;height:190px;border-radius:50%;border:5px solid var(--accent);background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800;object-fit:cover;overflow:hidden}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-block;padding:9px 18px;border-radius:999px;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.btn.o{background:transparent;border:2px solid var(--brand);color:var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 2px;font-size:17px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 8px}
+.card ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}.card li{margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--card);border:1px solid var(--line);padding:4px 12px;border-radius:999px;font-size:13.5px}
+.chip.t{border-color:var(--brand);color:var(--brand);font-weight:600}
+.tag{display:inline-block;font-size:12px;background:var(--accent);color:#2b2300;border-radius:6px;padding:1px 8px;font-weight:700;margin-bottom:6px}
+.sk h3{font-size:15px;color:var(--muted);margin:18px 0 8px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 20px calc(30px + env(safe-area-inset-bottom,0px))}
+.ct a{display:block;margin:4px 0}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+<main id="app"></main>
+<footer id="foot"></footer>
+
+<script>
+/* =====================================================================
+   CARA EDIT: semua isi website ada di bagian DATA ini.
+   Ubah teks di dalam tanda kutip "..." lalu simpan. Jangan hapus tanda
+   koma (,) dan kurung [ ] { }. Mau nambah item? Copy satu blok { ... },
+   tempel di bawahnya, lalu ubah isinya.
+   ===================================================================== */
+const DATA = {
+  nama: "Maya Dwi Latifah",
+  peran: "Software Quality Assurance | Manual, API & UAT Testing",
+  foto: "foto.jpg",   // taruh file foto di folder yang sama, namanya foto.jpg (kalau tidak ada, muncul inisial)
+  cv: "",             // isi nama file CV, misal "CV-Maya.pdf" (kosongkan kalau belum ada)
+  tentang: [
+    "Detail-oriented Information Systems graduate with 1+ year of hands-on experience in Software Quality Assurance, Mobile Testing, and User Acceptance Testing across Android and web platforms.",
+    "Experienced in validating user journeys, executing Functional, Regression, Integration (SIT), and end-to-end testing, plus documenting and tracking defects using Azure DevOps and JIRA. Familiar with API testing using Postman, JSON payload validation, and HTTP status codes.",
+    "Eager to contribute to quality assurance processes by applying testing methodologies, critical thinking, and strong attention to detail to ensure optimal product performance and user satisfaction."
+  ],
+  pendidikan: [
+    { nama: "Universitas Bina Sarana Informatika", detail: "Sistem Informasi (Fresh Graduate)", periode: "2022 - 2026", ekstra: "GPA: 3.87" },
+    { nama: "SMKS Telkom Sandhy Putra Jakarta", detail: "Teknik Jaringan Akses Telekomunikasi", periode: "", ekstra: "Nilai akhir: 89" }
+  ],
+  pengalaman: [
+    { posisi: "Quality Assurance Manual (Internship)", perusahaan: "PT Kompas Media Nusantara (Harian Kompas)", periode: "", poin: [
+      "Executed manual testing (functional & regression) using Azure, Postman, and LambdaTest.",
+      "Created and maintained 40+ detailed test cases with high clarity and traceability.",
+      "Applied BDD Cucumber (Gherkin) for test scenario development, fostering better QA-dev collaboration.",
+      "Detected and reported 20+ critical bugs, boosting platform stability by 15%.",
+      "Collaborated with engineering & product teams to refine test coverage and reduce post-release bugs."
+    ]},
+    { posisi: "Solution QA (Internship)", perusahaan: "PT Mid Solusi Nusantara (Mekari)", periode: "", poin: [
+      "Designed and executed 200+ structured test cases (positive, negative, edge cases) for UAT, E2E, functional, and regression testing on a client website.",
+      "Collaborated with stakeholders so UAT scenarios aligned with real user needs and business processes.",
+      "Reported bugs with clear reproduction steps and video evidence using Jam.dev, improving resolution time.",
+      "Analyzed BRD and user manuals with System Analysts for requirement-driven test coverage."
+    ]},
+    { posisi: "Data Scientist (Virtual Internship)", perusahaan: "ID/X Partners", periode: "", poin: [
+      "Analyzed large datasets (39,833 records) to assess data quality and identify compliance issues.",
+      "Conducted data validation and anomaly detection, improving reporting accuracy by 20%.",
+      "Built automated reports with Looker Studio, Power BI, and Tableau to track compliance trends."
+    ]},
+    { posisi: "Hardware Engineer (Internship)", perusahaan: "PT Industri Telekomunikasi Indonesia (INTI)", periode: "", poin: [
+      "Conducted system validation and functional testing to ensure compliance with operational policies.",
+      "Diagnosed and resolved device errors, improving system efficiency by 70%.",
+      "Conducted network testing to reduce system downtime by 20%."
+    ]}
+  ],
+  proyek: [
+    { nama: "ERP Design of Sales Information System", info: "PT Surya Inti Aneka Pangan | Nov - Des 2024", deskripsi: "QA team member on a web-based ERP for sales operations.", poin: [
+      "Designed and executed manual test cases; performed Functional, Smoke, and UAT testing.",
+      "Reported issues to developers and analysts, tracked in Jira.",
+      "Achieved 95% compliance with internal business processes during system validation."
+    ], tools: ["Figma","Word","Excel","Odoo","draw.io","Jira"], link: "" },
+    { nama: "Historical Artifact Discovery Application", info: "Sep - Des 2024", deskripsi: "Web app to explore historical artifacts; QA focused on functional requirements and user experience.", poin: [
+      "Functional & usability testing with manual test cases and spreadsheet tracking.",
+      "Logged bugs and usability issues, collaborated with developers on fixes."
+    ], tools: ["Word","VS Code","FlutLab","Postman"], link: "" },
+    { nama: "UX Research & UI/UX: Rice-Selling Website (Agen Sri Rizki)", info: "Apr - Jun 2024", deskripsi: "Web solution to digitize sales at a traditional rice shop in Cengkareng.", poin: [
+      "User interviews and surveys to find needs and pain points.",
+      "Wireframes and interactive prototypes in Figma; iterative testing; design handoff to developers."
+    ], tools: ["Figma","draw.io"], link: "" },
+    { nama: "Decision Tree C4.5: Prediksi Kelulusan Siswa", info: "Data Mining", deskripsi: "Predicting and classifying student graduation based on KKM in History & Geography.", poin: [
+      "C4.5 model in RapidMiner reaching 85% accuracy.",
+      "Preprocessing and feature selection in Google Colab, improving model performance by 20%."
+    ], tools: ["RapidMiner","Google Colab","Word"], link: "" },
+    { nama: "KASIKOS: Student Boarding House App", info: "Apr - Jun 2024", deskripsi: "Course project (Management Information Systems) for a boarding-house search application.", poin: [], tools: ["Figma"], link: "" },
+    { nama: "Taniren App (Petani Keren)", info: "", deskripsi: "App for farmers: agriculture news, consultation, and farming supplies shopping.", poin: [], tools: [], link: "" },
+    { nama: "LaundWash Website", info: "Information System Project Analysis", deskripsi: "Website to use laundry services without visiting the store, with various service options.", poin: [], tools: ["draw.io"], link: "" }
+  ],
+  skill: {
+    "Testing": ["Manual Testing","Functional Testing","Regression Testing","UAT","SIT","API Testing (Postman)","Test Case Design","Test Planning","Bug Tracking & Reporting","STLC / SDLC","Agile/Scrum","Mobile Testing"],
+    "Tools": ["JIRA","Azure DevOps","Postman","TestRail","Jam.dev","LambdaTest","Gherkin/BDD","JMeter (basic)","Selenium (basic)","Playwright (basic)","Katalon (basic)","Grafana","GitHub","Trello","Notion"],
+    "Data & Lainnya": ["SQL","MySQL","Google Colab","RapidMiner","Power BI","Looker Studio","Tableau","Figma","draw.io","Canva","Microsoft Office"]
+  },
+  sertifikat: [
+    "Sertifikat Profisiensi Basis Data (Master), Ikatan Ahli Informatika Indonesia",
+    "Sertifikat Kompetensi Rangkaian Instalasi Telecom Distribution Technology, SMK Telkom",
+    "IT Bootcamp “Software Development”, Universitas BSI"
+  ],
+  kursus: [
+    "Fundamental SQL Using SELECT Statement, DQLab",
+    "Data Science Fundamentals, DQLab",
+    "Intro to Data Analysis, MySkill",
+    "Belajar Dasar Data Science, Dicoding",
+    "Belajar Dasar SQL, Dicoding",
+    "Learn Figma: UI/UX Design Masterclass, Udemy"
+  ],
+  organisasi: { nama: "HIMSI (Himpunan Mahasiswa Sistem Informasi)", poin: [
+    "Organized internal and external collaborations for educational events.",
+    "Scheduled meetings and briefings with stakeholders to keep projects aligned.",
+    "Briefed committee members and stakeholders on event agenda within one week.",
+    "Developed work plans for educational programs and organizational growth."
+  ]},
+  kontak: [
+    { label: "Email", teks: "mdwilatifah@gmail.com", url: "mailto:mdwilatifah@gmail.com" },
+    { label: "LinkedIn", teks: "Maya Dwi Latifah", url: "" },          // isi link LinkedIn kamu
+    { label: "Instagram", teks: "@mayalatifah_", url: "https://instagram.com/mayalatifah_" },
+    { label: "GitHub", teks: "", url: "" },                               // isi kalau ada
+    { label: "Telepon", teks: "085814717514", url: "tel:085814717514" }  // hapus baris ini kalau tidak mau nomor tampil publik
+  ]
+};
+
+/* ====================== Bagian di bawah ini tidak perlu diubah ====================== */
+const E = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ul = a => a && a.length ? `<ul>${a.map(x => `<li>${E(x)}</li>`).join("")}</ul>` : "";
+const chips = (a, c = "") => a.map(x => `<span class="chip ${c}">${E(x)}</span>`).join("");
+const D = DATA;
+const ini = D.nama.split(" ").map(w => w[0]).slice(0, 2).join("");
+const sec = (id, title, body) => `<section id="${id}"><h2>${title}</h2>${body}</section>`;
+
+const html = [
+  `<section class="hero" id="home">
+    <img class="photo" src="${E(D.foto)}" alt="Foto ${E(D.nama)}" onerror="this.outerHTML='<div class=photo>${E(ini)}</div>'">
+    <div class="txt"><h1>${E(D.nama)}</h1><div class="role">${E(D.peran)}</div>
+    <p>${E(D.tentang[0])}</p>
+    <div class="btns"><a class="btn" href="#proyek">Lihat Proyek</a><a class="btn o" href="#kontak">Kontak</a>${D.cv ? `<a class="btn o" href="${E(D.cv)}" target="_blank" rel="noopener">Unduh CV</a>` : ""}</div></div>
+  </section>`,
+  sec("tentang", "Tentang Saya", D.tentang.slice(1).map(p => `<p>${E(p)}</p>`).join("") + `<div class="grid" style="margin-top:16px">${D.pendidikan.map(e => `<div class="card"><h3>${E(e.nama)}</h3><p class="sub">${E([e.detail, e.periode].filter(Boolean).join(" | "))}</p><b>${E(e.ekstra)}</b></div>`).join("")}</div>`),
+  sec("pengalaman", "Pengalaman", `<div class="grid">${D.pengalaman.map(x => `<div class="card"><h3>${E(x.posisi)}</h3><p class="sub">${E([x.perusahaan, x.periode].filter(Boolean).join(" | "))}</p>${ul(x.poin)}</div>`).join("")}</div>`),
+  sec("proyek", "Proyek", `<div class="grid">${D.proyek.map((p, i) => `<div class="card"><span class="tag">Project ${i + 1}</span><h3>${E(p.nama)}</h3>${p.info ? `<p class="sub">${E(p.info)}</p>` : ""}<p style="font-size:14.5px;margin:6px 0">${E(p.deskripsi)}</p>${ul(p.poin)}${p.tools.length ? `<div class="chips" style="margin-top:10px">${chips(p.tools, "t")}</div>` : ""}${p.link ? `<p><a href="${E(p.link)}" target="_blank" rel="noopener">Lihat dokumen proyek</a></p>` : ""}</div>`).join("")}</div>`),
+  sec("skill", "Skill & Tools", `<div class="sk">${Object.entries(D.skill).map(([k, v]) => `<h3>${E(k)}</h3><div class="chips">${chips(v)}</div>`).join("")}</div>`),
+  sec("sertifikat", "Sertifikat & Kursus", `<div class="grid"><div class="card"><h3>Sertifikat</h3>${ul(D.sertifikat)}</div><div class="card"><h3>Kursus</h3>${ul(D.kursus)}</div><div class="card"><h3>Organisasi</h3><p class="sub">${E(D.organisasi.nama)}</p>${ul(D.organisasi.poin)}</div></div>`),
+  sec("kontak", "Kontak", `<div class="card ct">${D.kontak.map(k => { const t = k.teks || k.url; return t ? `<div><b>${E(k.label)}:</b> ${k.url ? `<a href="${E(k.url)}" target="_blank" rel="noopener">${E(t)}</a>` : E(t)}</div>` : ""; }).join("")}</div>`)
+].join("");
+
+document.getElementById("app").innerHTML = html;
+document.getElementById("nav").innerHTML = [["tentang","Tentang"],["pengalaman","Pengalaman"],["proyek","Proyek"],["skill","Skill"],["sertifikat","Sertifikat"],["kontak","Kontak"]].map(([i, t]) => `<a href="#${i}">${t}</a>`).join("");
+document.getElementById("foot").textContent = "© " + new Date().getFullYear() + " " + D.nama;
+document.title = D.nama + " | Portofolio";
+</script>
+</body>
+</html>
